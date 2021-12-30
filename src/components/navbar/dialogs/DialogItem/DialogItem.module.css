@@ -1,0 +1,9 @@
+
+.dialog{
+    color: white;
+    text-decoration: none;
+}
+.activeLink{
+    color: #E69B51;
+    text-decoration: none;
+}

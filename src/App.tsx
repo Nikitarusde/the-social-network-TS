@@ -8,23 +8,27 @@ import {BrowserRouter, Routes, Route} from "react-router-dom";
 import {Dialogs} from "./components/navbar/dialogs/Dialogs";
 import {News} from "./components/navbar/News/News";
 import {Music} from "./components/navbar/Music/Music";
-import {Setting} from "./components/navbar/Setting/Setting";
+import {Settings} from "./components/navbar/Setting/Settings";
 
 
 function App() {
+
+
     return (
         <BrowserRouter>
-        <div className={"app-wrapper"}>
-            <Header />
-            <Navbar />
-            <Routes>
-                <Route path="/profile" element={<Profile/>}/>
-                <Route path="/dialogs" element={<Dialogs/>}/>
-                <Route path="/news" element={<News/>}/>
-                <Route path="/music" element={<Music/>}/>
-                <Route path="/settings" element={<Setting/>}/>
-            </Routes>
-        </div>
+            <div className={"app-wrapper"}>
+                <Header/>
+                <Navbar/>
+                <div className={"app-wrapper-content"}>
+                    <Routes>
+                        <Route path="/profile" element={<Profile/>}/>
+                        <Route path="/dialogs/*" element={<Dialogs/>}/>   {/*добавлена звездочка*/}
+                        <Route path="/news" element={<News/>}/>
+                        <Route path="/music" element={<Music/>}/>
+                        <Route path="/settings" element={<Settings/>}/>
+                    </Routes>
+                </div>
+            </div>
         </BrowserRouter>
     );
 }

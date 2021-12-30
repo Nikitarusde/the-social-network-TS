@@ -1,4 +1,17 @@
-.content {
-    grid-area: c;
-    background-color: #C9AFC5;
+
+
+.dialogs{
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+
+    /*padding-top: 10px;*/
+}
+.dialogsItems {
+    margin: 10px;
+}
+
+
+
+.messages{
+    margin: 10px;
 }
