@@ -51,3 +51,12 @@ export const state: State = {
         ]
     }
 }
+
+export const addPost = (postMessage: string) => {
+    const newPost: PostPropsType = {
+        id: 5,
+        post: postMessage,
+        count: 44,
+    }
+    state.profilePage.post.push(newPost);
+}

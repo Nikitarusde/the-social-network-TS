@@ -1,10 +1,11 @@
-import React, {LegacyRef} from "react";
+import React from "react";
 import classes from "./MyPosts.module.css";
 import {Post} from "./Post/Post";
 import {ProfilePagePropsType} from "../../../../redux/state";
 
 type MyPostsPropsType = {
     profilePage: ProfilePagePropsType
+    addPost: (postMessage: string) => void,
 }
 
 export const MyPosts = (props: MyPostsPropsType) => {
@@ -16,8 +17,10 @@ export const MyPosts = (props: MyPostsPropsType) => {
 
     let addPost = () => {
         // if (newPostElement.current)
-        let text = newPostElement.current?.value;
-            alert(text);
+        // let text = newPostElement.current ? newPostElement.current.value : "----";
+        if (newPostElement.current) {
+            props.addPost(newPostElement.current.value)
+        }
     }
 
     return (
