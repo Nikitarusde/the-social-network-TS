@@ -8,7 +8,6 @@ type DialogItemPropsType = {
 
 }
 
-
 export const DialogItem = (props: DialogItemPropsType) => {
 
     return(

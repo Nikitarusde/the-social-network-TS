@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {StatelessComponent} from 'react';
 import "./logo.jpg"
 import './App.css';
 import {Header} from "./components/header/Header";
@@ -9,9 +9,13 @@ import {Dialogs} from "./components/navbar/dialogs/Dialogs";
 import {News} from "./components/navbar/News/News";
 import {Music} from "./components/navbar/Music/Music";
 import {Settings} from "./components/navbar/Setting/Settings";
+import {State} from "./redux/state";
 
+type AppPropsTpe = {
+    state: State,
+}
 
-function App() {
+function App(props: AppPropsTpe) {
 
 
     return (
@@ -21,8 +25,8 @@ function App() {
                 <Navbar/>
                 <div className={"app-wrapper-content"}>
                     <Routes>
-                        <Route path="/profile" element={<Profile/>}/>
-                        <Route path="/dialogs/*" element={<Dialogs/>}/>   {/*добавлена звездочка*/}
+                        <Route path="/profile" element={<Profile profilePage={props.state.profilePage}/>}/>
+                        <Route path="/dialogs/*" element={<Dialogs dialogsPage={props.state.dialogsPage}/>}/> {/*добавлена звездочка*/}
                         <Route path="/news" element={<News/>}/>
                         <Route path="/music" element={<Music/>}/>
                         <Route path="/settings" element={<Settings/>}/>

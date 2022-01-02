@@ -1,14 +1,16 @@
 import React from "react";
 import classes from "./MyPosts.module.css";
 import {Post} from "./Post/Post";
+import { ProfilePagePropsType} from "../../../../redux/state";
 
-export const MyPosts = () => {
-    let postData = [
-        {id: 1, post: "Hi", count: 2},
-        {id: 2, post: "Its my first post", count: 4},
-        {id: 3, post: "I will to tell about my study in IT-Incubator", count: 5},
+type MyPostsPropsType = {
+    profilePage: ProfilePagePropsType
+}
 
-    ]
+export const MyPosts = (props: MyPostsPropsType) => {
+
+
+    let postsElements = props.profilePage.post.map(post => <Post id={post.id} post={post.post} count={post.count}/>)
 
     // const message: string = "Hi, how are you?"
 
@@ -22,9 +24,7 @@ export const MyPosts = () => {
                <button>Add post</button>
             </div>
             <div className={classes.posts}>
-                <Post message={postData[0].post} count={postData[0].count}/>
-                <Post message={postData[1].post} count={postData[1].count}/>
-                <Post message={postData[2].post} count={postData[2].count}/>
+                {postsElements}
             </div>
         </div>
     )
