@@ -9,7 +9,7 @@ import {Dialogs} from "./components/navbar/dialogs/Dialogs";
 import {News} from "./components/navbar/News/News";
 import {Music} from "./components/navbar/Music/Music";
 import {Settings} from "./components/navbar/Setting/Settings";
-import {State} from "./redux/state";
+import {changeNewTexCallback, State} from "./redux/state";
 import {addPost} from "./redux/state";
 
 type AppPropsTpe = {
@@ -26,7 +26,12 @@ function App(props: AppPropsTpe) {
                 <Navbar/>
                 <div className={"app-wrapper-content"}>
                     <Routes>
-                        <Route path="/profile" element={<Profile profilePage={props.state.profilePage} addPost={addPost}/>}/>
+                        <Route path="/profile" element={<Profile
+                            profilePage={props.state.profilePage}
+                            message={props.state.profilePage.messageForNewPost}
+                            addPost={addPost}
+                            changeNewTexCallback={changeNewTexCallback}
+                        />}/>
                         <Route path="/dialogs/*" element={<Dialogs dialogsPage={props.state.dialogsPage}/>}/> {/*добавлена звездочка*/}
                         <Route path="/news" element={<News/>}/>
                         <Route path="/music" element={<Music/>}/>

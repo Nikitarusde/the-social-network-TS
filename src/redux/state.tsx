@@ -1,4 +1,5 @@
 import React from "react";
+import {renderTree} from "../render";
 
 export type MessagesPropsType = {
     id: number,
@@ -14,6 +15,7 @@ export type PostPropsType = {
     count: number,
 }
 export type ProfilePagePropsType = {
+    messageForNewPost: string,
     post: Array<PostPropsType>,
 }
 export type DialogsPagePropsType = {
@@ -28,6 +30,7 @@ export type State = {
 
 export const state: State = {
     profilePage: {
+        messageForNewPost: "wefwefwe",
         post: [
             {id: 1, post: "Hi", count: 2},
             {id: 2, post: "Its my first post", count: 4},
@@ -59,4 +62,11 @@ export const addPost = (postMessage: string) => {
         count: 44,
     }
     state.profilePage.post.push(newPost);
+
+    renderTree(state);
+}
+
+export const changeNewTexCallback = (newText: string) => {
+    state.profilePage.messageForNewPost = newText;
+    renderTree(state)
 }
